@@ -60,28 +60,31 @@ specify all steps required to produce a model: input dependencies including data
 and output information to be saved. See the quick start section below or
 the `Get Started <https://dvc.org/doc/get-started>`_ tutorial to learn more.
 
-Quick start
+Usage
 ===========
 
-Please read `Get Started <https://dvc.org/doc/get-started>`_ guide for a full version. Common workflow commands include:
+Common workflow commands include:
 
 +-----------------------------------+-------------------------------------------------------------------+
 | Step                              | Command                                                           |
 +===================================+===================================================================+
-| Track data                        | | ``$ git add train.py``                                          |
-|                                   | | ``$ dvc add images.zip``                                        |
+| Load data                         | | ``$ detector load --help``                                     |
+|                                   | |                                                                 |
 +-----------------------------------+-------------------------------------------------------------------+
-| Connect code and data by commands | | ``$ dvc run -d images.zip -o images/ unzip -q images.zip``      |
+| Build features                    | | ``$ detector build --help``                                    |
 |                                   | | ``$ dvc run -d images/ -d train.py -o model.p python train.py`` |
 +-----------------------------------+-------------------------------------------------------------------+
-| Make changes and reproduce        | | ``$ vi train.py``                                               |
+| Train models                      | | ``$ vi train.py``                                               |
 |                                   | | ``$ dvc repro model.p.dvc``                                     |
 +-----------------------------------+-------------------------------------------------------------------+
-| Share code                        | | ``$ git add .``                                                 |
+| Predict data                      | | ``$ git add .``                                                 |
 |                                   | | ``$ git commit -m 'The baseline model'``                        |
 |                                   | | ``$ git push``                                                  |
 +-----------------------------------+-------------------------------------------------------------------+
-| Share data and ML models          | | ``$ dvc remote add myremote -d s3://mybucket/image_cnn``        |
+| Push data                         | | ``$ dvc remote add myremote -d s3://mybucket/image_cnn``        |
+|                                   | | ``$ dvc push``                                                  |
++-----------------------------------+-------------------------------------------------------------------+
+| Run                               | | ``$ dvc remote add myremote -d s3://mybucket/image_cnn``        |
 |                                   | | ``$ dvc push``                                                  |
 +-----------------------------------+-------------------------------------------------------------------+
 
