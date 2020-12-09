@@ -14,9 +14,9 @@
 
 |
 
-**Data Version Control** or **DVC** is an **open-source** tool for data science and machine
-learning projects. Key features:
+**Detector** is a complete machine learning workflow commands to perform an ensemble anomaly detection methoology.
 
+  
 #. Simple **command line** Git-like experience. Does not require installing and maintaining
    any databases. Does not depend on any proprietary online services.
 
@@ -193,8 +193,13 @@ Comparison to related technologies
 
 #. `DAGsHub <https://dagshub.com/>`_ - This is a Github equivalent for DVC. Pushing Git+DVC based repositories to DAGsHub will produce in a high level project dashboard; including DVC pipelines and metrics visualizations, as well as links to any DVC-managed files present in cloud storage.
 
-Contributing
+Disclaimer
 ============
+Detector's suite of algorithms aims at identifying possible events that deviate significantly from global observed events.
+In this sense, detector provides a level of risk of possible anomalies,
+but does not detect anomalies or fraud events with certainty.
+
+As specified in its general rules of intervention, KPMG cannot be held responsible for decisions made on the basis of proposals or predictions made by detector.
 
 |Maintainability| |Donate|
 
