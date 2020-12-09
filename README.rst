@@ -1,45 +1,31 @@
 |Banner|
 
-`Website <https://dvc.org>`_
-• `Docs <https://dvc.org/doc>`_
-• `Blog <http://blog.dataversioncontrol.com>`_
-• `Twitter <https://twitter.com/DVCorg>`_
-• `Chat (Community & Support) <https://dvc.org/chat>`_
-• `Tutorial <https://dvc.org/doc/get-started>`_
-• `Mailing List <https://sweedom.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&id=24c0ecc49a>`_
-
 |Release| |CI| |Maintainability| |Coverage| |Donate| |DOI|
 
 |PyPI| |Packages| |Brew| |Conda| |Choco| |Snap|
 
-|
+**Detector** is a complete machine learning workflow commands to perform an ensemble anomaly detection methoology. It's has a command line tool that interacts with the associated Snowflake database and multiple scripts to estimate anomaly probabilities, ranging from data collection to updating outputs to snowflake, passing by the creation of client / ticket features and modeling.   
 
-**Detector** is a complete machine learning workflow commands to perform an ensemble anomaly detection methoology.
+The Key features are:
 
-  
-#. Simple **command line** Git-like experience. Does not require installing and maintaining
-   any databases. Does not depend on any proprietary online services.
+#. Interact with Snowflake databases and **Collect data** according to the used defined date window and table name.
 
-#. Management and versioning of **datasets** and **machine learning models**. Data is saved in
-   S3, Google cloud, Azure, Alibaba cloud, SSH server, HDFS, or even local HDD RAID.
+#. **Build features** by aggregating raw data by client or ticket.
 
-#. Makes projects **reproducible** and **shareable**; helping to answer questions about how
-   a model was built.
+#. **Train and optimize** different anomaaly detection models and using *bayesian* optimization routine.
 
-#. Helps manage experiments with Git tags/branches and **metrics** tracking.
+#. Estimate **anomaly probabilities** using developed models and **push** result back to Snowflake.
 
-**DVC** aims to replace spreadsheet and document sharing tools (such as Excel or Google Docs)
-which are being used frequently as both knowledge repositories and team ledgers.
-DVC also replaces both ad-hoc scripts to track, move, and deploy different model versions;
-as well as ad-hoc data file suffixes and prefixes.
+**Detector** aims to automatically assign risk probabilites to client or ticket according certain period and push the results
+to Snwoflake.
 
 .. contents:: **Contents**
-  :backlinks: none
+:backlinks: none
 
-How DVC works
+How Detector works
 =============
 
-We encourage you to read our `Get Started <https://dvc.org/doc/get-started>`_ guide to better understand what DVC
+Detector We encourage you to read our `Get Started <https://dvc.org/doc/get-started>`_ guide to better understand what DVC
 is and how it can fit your scenarios.
 
 The easiest (but not perfect!) *analogy* to describe it: DVC is Git (or Git-LFS to be precise) & Makefiles
@@ -60,6 +46,22 @@ specify all steps required to produce a model: input dependencies including data
 and output information to be saved. See the quick start section below or
 the `Get Started <https://dvc.org/doc/get-started>`_ tutorial to learn more.
 
+```
+Usage: stronghold.py [OPTIONS]
+
+  Securely configure your Mac.
+  Developed by Aaron Lichtman -> (Github: alichtman)
+
+
+Options:
+  -lockdown  Set secure configuration without user interaction.
+  -v         Display version and author information and exit.
+  -help, -h  Show this message and exit.
+```
+
+
+
+
 Usage
 ===========
 
@@ -68,10 +70,10 @@ Common workflow commands include:
 +-----------------------------------+-------------------------------------------------------------------+
 | Step                              | Command                                                           |
 +===================================+===================================================================+
-| Load data                         | | ``$ detector load --help``                                     |
-|                                   | |                                                                 |
+| Load data                         | | ``$ detector load --help``                                      |
+|                                   | | ``$ detector load --help``                                      |
 +-----------------------------------+-------------------------------------------------------------------+
-| Build features                    | | ``$ detector build --help``                                    |
+| Build features                    | | ``$ detector build --help``                                     |
 |                                   | | ``$ dvc run -d images/ -d train.py -o model.p python train.py`` |
 +-----------------------------------+-------------------------------------------------------------------+
 | Train models                      | | ``$ vi train.py``                                               |
