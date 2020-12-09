@@ -1,14 +1,8 @@
-|Banner|
-
-|Release| |CI| |Maintainability| |Coverage| |Donate| |DOI|
-
-|PyPI| |Packages| |Brew| |Conda| |Choco| |Snap|
-
 **Detector** is a complete machine learning workflow commands to perform an ensemble anomaly detection methoology. It's has a command line tool that interacts with the associated Snowflake database and multiple scripts to estimate anomaly probabilities, ranging from data collection to updating outputs to snowflake, passing by the creation of client / ticket features and modeling.   
 
-The Key features are:
+The key features are:
 
-#. Interact with Snowflake databases and **Collect data** according to the used defined date window and table name.
+#. Interact with Snowflake databases and **collect data** according to the used defined date window and table name.
 
 #. **Build features** by aggregating raw data by client or ticket.
 
@@ -70,18 +64,17 @@ Common workflow commands include:
 +-----------------------------------+-------------------------------------------------------------------+
 | Step                              | Command                                                           |
 +===================================+===================================================================+
-| Load data                         | | ``$ detector load --help``                                      |
+| Load data                         | | ``$ detector load --table-name --end-date --nmonth --storage``  |
 |                                   | | ``$ detector load --help``                                      |
 +-----------------------------------+-------------------------------------------------------------------+
-| Build features                    | | ``$ detector build --help``                                     |
-|                                   | | ``$ dvc run -d images/ -d train.py -o model.p python train.py`` |
+| Build features                    | | ``$ detector build --table-name --end-date --nmonth --type-features --storage``|
+|                                   | | ``$ detector build --help`` |
 +-----------------------------------+-------------------------------------------------------------------+
-| Train models                      | | ``$ vi train.py``                                               |
-|                                   | | ``$ dvc repro model.p.dvc``                                     |
+| Train models                      | | ``$ detector train --table-name --end-date --nmonth --type-features --storage`` |
+|                                   | | ``$ detector build --help``                                     |
 +-----------------------------------+-------------------------------------------------------------------+
-| Predict data                      | | ``$ git add .``                                                 |
-|                                   | | ``$ git commit -m 'The baseline model'``                        |
-|                                   | | ``$ git push``                                                  |
+| Predict data                      | | ``$ detector predict --table-name --end-date --nmonth --type-features --storage``|
+|                                   | | ``$ detector predict --help``                                   |
 +-----------------------------------+-------------------------------------------------------------------+
 | Push data                         | | ``$ dvc remote add myremote -d s3://mybucket/image_cnn``        |
 |                                   | | ``$ dvc push``                                                  |
